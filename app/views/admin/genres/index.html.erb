@@ -1,6 +1,6 @@
 <h1>ジャンル新規登録</h1>
 
-<%= form_with model:@genre, url: admin_genres_path, method: :POST, local: true do |f| %>
+<%= form_with model:@genre, url:admin_genres_path, method: :POST, local: true do |f| %>
   <div class="field">
     <%= f.label :"ジャンル名" %>
     <%= f.text_field :name %>
@@ -14,12 +14,13 @@
 </br>
 
 <h1>ジャンル一覧</h1>
-
 <table>
-  <%= @genres.each do |genre| %>
-    <tr>
-      <td><%= genre.name %></td>
-      <td><%= link_to "編集する", edit_admin_genre_path %></td>
-    </tr>
-  <% end %>
+  <tbody>
+    <% @genres.each do |genre| %>
+      <tr>
+        <td><%= genre.name %></td>
+        <td><%= link_to "編集する", edit_admin_genre_path(genre.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
