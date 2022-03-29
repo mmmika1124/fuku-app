@@ -1,10 +1,12 @@
+<h1>商品新規作成</h1>
+<%= link_to "新規作成", new_admin_item_path, class: "btn btn-dark" %>
+
 <h1>商品一覧</h1>
 <table>
   <thead>
     <tr>
       <th>商品ID</th>
       <th>商品名</th>
-      <th></th>
       <th>税抜価格</th>
       <th>ジャンル</th>
     </tr>
@@ -13,9 +15,11 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= item.name %></td>
-        <td><%= attachment_image_tag item, :image, size: "50×50", format: 'jpg' %></td>
-        <td><%= item.price.to_s(:delimited) %></td>
+        <td>
+          <%= link_to item.name, admin_item_path(item.id) %>
+          <%= attachment_image_tag item, :image, format: 'jpg', size: "100x100" %>
+        </td>
+        <td>￥<%= item.price.to_s(:delimited) %></td>
         <td><%= item.genre.name %></td>
       </tr>
     <% end %>

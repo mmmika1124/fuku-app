@@ -1,2 +1,32 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<h1>商品編集</h1>
+
+<%= form_with model:@item, url:admin_item_path, method: :PATCH, local: true do |f| %>
+  <div class="field">
+    <%= f.label :"商品名" %>
+    <%= f.text_field :name %>
+  </div>
+  </br>
+  <div class="field">
+    <%= f.label :"商品説明" %>
+    <%= f.text_area :introduction %>
+  </div>
+  </br>
+  <div class="field">
+    <%= f.label :"ジャンル" %>
+    <%= f.collection_select :genre_id, @genres, :id, :name %>
+  </div>
+  </br>
+  <div class="field">
+    <%= f.label :"税抜価格" %>
+    <%= f.text_field :price %> 円
+  </div>
+  </br>
+  <div class="field">
+    <%= f.label :"商品画像" %>
+    <%= f.attachment_field :image %>
+  </div>
+  </br>
+  <div class="actions">
+    <%= f.submit "変更を保存", class: "btn btn-dark" %>
+  </div>
+<% end %>
