@@ -1,0 +1,39 @@
+<h1>会員情報変更</h1>
+
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <% @customer.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<%= form_with model:@customer, url:customer_path, method: :PATCH, local: true do |f| %>
+  <div class="field">
+    <%= f.label :"お名前" %>
+    <%= f.text_field :last_name %>
+    <%= f.text_field :first_name %>
+  </div>
+  </br>
+  <div class="field">
+    <%= f.label :"郵便番号" %>
+    <%= f.text_field :postal_code %>
+  </div>
+  </br>
+  <div class="field">
+    <%= f.label :"住所" %>
+    <%= f.text_field :address %>
+  </div>
+  </br>
+  <div class="field">
+    <%= f.label :"メールアドレス" %>
+    <%= f.text_field :email %>
+  </div>
+  </br>
+  <div class="actions">
+    <%= f.submit "変更を保存", class: "btn btn-dark" %>
+  </div>
+<% end %>
+
+</br>
+</br>
+</br>

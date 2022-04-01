@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
   end
+  scope module: 'public' do
+    get 'customers/mypage' => 'customers#show'
+    resources :customers, only: [:edit, :update]
+  end
 
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
