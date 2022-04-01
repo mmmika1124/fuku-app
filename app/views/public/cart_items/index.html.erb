@@ -1,0 +1,12 @@
+<h1>カート</h1>
+
+<div class="container">
+  <div class="row">
+    <% @cart_items.each do |cart_item| %>
+      <div class="col-3">
+        <%= attachment_image_tag cart_item.item, :image, format: 'jpg', size: "200x200" %>
+      </div>
+      <div class="col-6">
+
+      </div>
+    <% end %>

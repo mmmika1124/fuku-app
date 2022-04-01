@@ -15,11 +15,39 @@ footer{
   text-align: center;
 }
 
-.back-ground{
+.about-back-ground{
   width: 100%;
   height: 300px;
+  background-image: url(shutterstock_1717285603.jpg);
+  background-size: contain;
+}
+
+.news1{
+  width: 70%;
+  height: 200px;
   background-image: url(shutterstock_1283859631.jpg);
   background-size: contain;
+}
+
+.news1-content{
+  width: 100%;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.news1-text{
+  text-align: center;
+}
+
+.news2{
+  width: 70%;
+  height: 200px;
+  background-color: green;
+}
+
+.news2-text{
+  text-align: center;
+  color: white;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

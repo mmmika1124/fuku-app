@@ -13,7 +13,8 @@
       </br>
       <div>￥<%= (@item.price * 1.1).floor.to_s(:delimited) %></div>
       </br>
-      カートに入れる</br>
+      <div><%= link_to "カートに入れる", cart_items_path %></div>
+      </br>
       お気に入りに追加</br>
       レビューを見る
     </div>

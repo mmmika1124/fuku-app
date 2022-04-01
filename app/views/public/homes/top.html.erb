@@ -4,16 +4,41 @@
       <%= render "public/search" %>
     </div>
     <div class="col-9">
+      </br>
       <h5>new arrivals</h5>
       <ul class="bxslider">
         <% @items.first(3).each do |item| %>
-          <%= attachment_image_tag item, :image, format: 'jpg', size: "200x200" %>
+          <%= link_to item_path(item.id) do %>
+            <%= attachment_image_tag item, :image, format: 'jpg', size: "200x200" %>
+          <% end %>
         <% end %>
       </ul>
       </br>
       <h5><%= link_to "about me",about_path %> </h5>
       </br>
       <h5>news</h5>
+      <div class="news1">
+        <div class="news1-content">
+          <p class="news1-text">
+            </br>
+            </br>
+            </br>
+            onlineセールを開催します！</br>
+            4/15 ~ 4/20
+          </p>
+        </div>
+      </div>
+      </br>
+      <div class="news2">
+        <p class="news2-text">
+          </br>
+          </br>
+          </br>
+          GREEN</br>
+          今春のトレンドカラーをチェック！
+        </p>
+      </div>
+      </br>
     </div>
   </div>
 </div>
