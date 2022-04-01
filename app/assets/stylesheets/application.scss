@@ -2,15 +2,25 @@ header{
   height: 70px;
 }
 
-footer{
-  height: 70px;
-}
-
-h6, .nav-item{
+.nav-item{
   color: white;
 }
 
+footer{
+  height: 70px;
+  }
 
+.footer-text{
+  color: white;
+  text-align: center;
+}
+
+.back-ground{
+  width: 100%;
+  height: 300px;
+  background-image: url(shutterstock_1283859631.jpg);
+  background-size: contain;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

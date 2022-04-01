@@ -31,7 +31,7 @@
               カート
             </li>
             <li class="nav-item">
-              商品一覧
+              <%= link_to "商品一覧", items_path %>
             </li>
             <li class="nav-item">
               <%= link_to "マイページ", customers_mypage_path %>
@@ -77,8 +77,8 @@
     </main>
     <footer class= "bg-dark">
       <div>
-        <h6>お問い合わせ</h6>
-        <h6>＠saikai mika</h6>
+        <h6 class= "footer-text">お問い合わせ</h6>
+        <h6 class= "footer-text">＠saikai mika</h6>
       </div>
     </footer>
   </body>

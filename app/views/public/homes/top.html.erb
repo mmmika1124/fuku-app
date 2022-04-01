@@ -9,9 +9,11 @@
         <% @items.first(3).each do |item| %>
           <%= attachment_image_tag item, :image, format: 'jpg', size: "200x200" %>
         <% end %>
-     </ul>
-
-
+      </ul>
+      </br>
+      <h5><%= link_to "about me",about_path %> </h5>
+      </br>
+      <h5>news</h5>
     </div>
   </div>
 </div>

@@ -1,0 +1,26 @@
+<h1>商品詳細</h1>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <%= attachment_image_tag @item, :image, format: 'jpg', size: "300x300" %>
+    </div>
+    <div class="col-5">
+      <div><%= @item.name %></div>
+      </br>
+      <div><%= @item.introduction %></div>
+      </br>
+      <div>￥<%= (@item.price * 1.1).floor.to_s(:delimited) %></div>
+      </br>
+      カートに入れる</br>
+      お気に入りに追加</br>
+      レビューを見る
+    </div>
+  </div>
+  </br>
+  </br>
+  <div class="row">
+    <h3>レビュー</h3>
+  </div>
+</div>
