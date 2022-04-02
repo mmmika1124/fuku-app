@@ -1,30 +1,46 @@
 <h1>カート</h1>
-
-<div class="container">
-  <div class="row">
+<% if @cart_items.present? %>
+  <div>
+    <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :DELETE, data: {confirm: "本当にカートを空にしてもよろしいですか？"} %>
+  </div>
+  <div class="container">
     <% @cart_items.each do |cart_item| %>
-      <div class="col-3">
-        <%= attachment_image_tag cart_item.item, :image, format: 'jpg', size: "200x200" %>
+      <div class="row">
+        <div class="col-4">
+          <%= attachment_image_tag cart_item.item, :image, format: 'jpg', size: "200x200" %>
+        </div>
+        <div class="col-6">
+          <%= cart_item.item.name %>
+          <table>
+            <tr>
+              <th>単価（税込）：</th>
+              <td>￥<%= (cart_item.item.price * 1.1).floor.to_s(:delimited) %></td>
+            </tr>
+            <tr>
+              <th>数量　　　　：</th>
+              <td>
+                <%= form_with model:cart_item, url:cart_item_path(cart_item.id), method: :PATCH, local: true do |f| %>
+                  <%= f.select :amount, *[1..5] %>
+                  <%= f.submit "変更" %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th>小計　　　　：</th>
+              <td>￥<%= ((cart_item.item.price * 1.1) * (cart_item.amount)).floor.to_s(:delimited) %></td>
+            </tr>
+          </table>
+          <div>
+            <%= link_to "削除する", cart_item_path(cart_item.id), method: :DELETE, data: {confirm: "本当に削除してもよろしいですか？"} %>
+          </div>
+        </div>
       </div>
-      <div class="col-6">
-        <%= cart_item.item.name %>
-        <table>
-          <tr>
-            <th>単価（税込）：</th>
-            <td>￥<%= (cart_item.item.price * 1.1).floor.to_s(:delimited) %></td>
-          </tr>
-          <tr>
-            <th>数量　　　　：</th>
-            <td>
-              <%= form_with model:@cart_item, url:cart_item_path(cart_item.id), method: :PATCH, local: true do |f| %>
-                <%= f.select :amount, *[1..5] %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>小計　　　　：</th>
-            <td></td>
-          </tr>
-        </table>
-      </div>
+      </br>
     <% end %>
+  </div>
+<% else %>
+  <p>カートに商品が入っていません。</p>
+<% end %>
+<div>
+  <%= link_to "ショッピングを続ける", items_path %>
+</div>

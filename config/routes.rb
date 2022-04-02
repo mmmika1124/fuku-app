@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   scope module: 'public' do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-    resources :cart_items, only: [:index, :create, :update, :delete]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
   end
 
   # 管理者用
