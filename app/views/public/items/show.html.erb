@@ -13,7 +13,16 @@
       </br>
       <div>￥<%= (@item.price * 1.1).floor.to_s(:delimited) %></div>
       </br>
-      <div><%= link_to "カートに入れる", cart_items_path %></div>
+      <div>
+        <%= form_with model:@cart_item, url:cart_items_path, method: :POST, local: true do |f| %>
+          <% if customer_signed_in? %>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+          <% end %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.hidden_field :amount, :value => 1 %>
+          <%= f.submit "カートに入れる" %>
+        <% end %>
+      </div>
       </br>
       お気に入りに追加</br>
       レビューを見る

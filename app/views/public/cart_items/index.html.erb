@@ -7,6 +7,24 @@
         <%= attachment_image_tag cart_item.item, :image, format: 'jpg', size: "200x200" %>
       </div>
       <div class="col-6">
-
+        <%= cart_item.item.name %>
+        <table>
+          <tr>
+            <th>単価（税込）：</th>
+            <td>￥<%= (cart_item.item.price * 1.1).floor.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <th>数量　　　　：</th>
+            <td>
+              <%= form_with model:@cart_item, url:cart_item_path(cart_item.id), method: :PATCH, local: true do |f| %>
+                <%= f.select :amount, *[1..5] %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>小計　　　　：</th>
+            <td></td>
+          </tr>
+        </table>
       </div>
     <% end %>
