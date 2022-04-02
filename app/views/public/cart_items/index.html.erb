@@ -14,7 +14,7 @@
           <table>
             <tr>
               <th>単価（税込）：</th>
-              <td>￥<%= (cart_item.item.price * 1.1).floor.to_s(:delimited) %></td>
+              <td>￥<%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
             </tr>
             <tr>
               <th>数量　　　　：</th>
@@ -27,7 +27,7 @@
             </tr>
             <tr>
               <th>小計　　　　：</th>
-              <td>￥<%= ((cart_item.item.price * 1.1) * (cart_item.amount)).floor.to_s(:delimited) %></td>
+              <td>￥<%= cart_item.subtotal.to_s(:delimited) %></td>
             </tr>
           </table>
           <div>
@@ -37,6 +37,12 @@
       </div>
       </br>
     <% end %>
+    <div class="row">
+     注文合計　￥<%= @total.to_s(:delimited) %>
+    </div>
+  </div>
+  <div>
+    <%= link_to "ご購入手続きへ", new_order_path %>
   </div>
 <% else %>
   <p>カートに商品が入っていません。</p>

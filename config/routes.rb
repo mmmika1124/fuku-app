@@ -20,6 +20,11 @@ Rails.application.routes.draw do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
   end
+  scope module: 'public' do
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/thanks' => 'orders#thanks'
+    resources :orders, only: [:new, :create, :index, :show]
+  end
 
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
