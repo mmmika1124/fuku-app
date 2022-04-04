@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     resources :customers, only: [:edit, :update]
   end
   scope module: 'public' do
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+      get 'reviews/thanks' => 'reviews#thanks'
+      resources :reviews, only: [:new, :create]
+    end
   end
   scope module: 'public' do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
@@ -42,6 +45,9 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :customers, only: [:index, :show]
+  end
+  namespace :admin do
+    resources :orders, only: [:index, :show]
   end
 
 end

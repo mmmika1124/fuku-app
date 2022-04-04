@@ -61,16 +61,7 @@
             </li>
           <% elsif admin_signed_in? %>
             <li class="nav-item">
-              注文履歴
-            </li>
-            <li class="nav-item">
-              <%= link_to "ジャンル", admin_genres_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "商品", admin_items_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "会員", admin_customers_path %>
+              <%= link_to "TOPページ", admin_path %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
