@@ -10,6 +10,13 @@
         <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
         <%= f.label :payment_method, "銀行振込" %>
         </br>
+        </br>
+        <div>
+          お届け先は現在マイページで確認できる登録先のご住所、ご氏名宛となります。</br>
+          次のページにて記載がありますのでお間違いがないかご確認ください。
+        </div>
+        </br>
+        </br>
         <%= f.submit "確認画面へ進む" %>
       <% end %>
     </div>
