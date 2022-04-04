@@ -1,2 +1,57 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+<div class="container">
+  <div class="row">
+    <table>
+      <tr>
+        <th>注文日</th>
+        <td><%= @order.updated_at.strftime("%Y/%m/%d") %></td>
+      </tr>
+      <tr>
+        <th>注文番号</th>
+        <td><%= @order.id %></td>
+      </tr>
+      <tr>
+        <th>支払金額</th>
+        <td>￥<%= (@order.total_payment).to_s(:delimited) %></td>
+      </tr>
+      <tr>
+        <th>支払方法</th>
+        <td><%= @order.payment_method_i18n %></td>
+      </tr>
+    </table>
+  </div>
+  </br>
+  <div class="row">
+    <% @order_details.each do |order_detail| %>
+      <div class="col-2 mb-3">
+        <%= attachment_image_tag order_detail.item, :image, format: 'jpg', size: "150x150" %>
+      </div>
+      <div class="col-3 mb-3">
+        <%= order_detail.item.name %></br>
+        数量：　<%= order_detail.amount %></br>
+        ￥<%= order_detail.item.with_tax_price.to_s(:delimited) %></br>
+        レビューを書く
+      </div>
+      <div class="col-1 mb-3">
+      </div>
+    <% end %>
+  </div>
+  </br>
+  <div class="row">
+    <table>
+      <tr>
+        <th>配送先</th>
+        <td>〒<%= @order.postal_code %><td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= @order.address %><td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= @order.name %><td>
+      </tr>
+    </table>
+  </div>
+  </br>
+</div>
