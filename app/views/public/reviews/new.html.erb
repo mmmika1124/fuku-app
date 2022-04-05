@@ -1,3 +1,16 @@
+<!--raty.js-->
+<script>
+$(document).ready(function(){
+  $('#star').raty({
+    starOff: "<%= asset_path("star-off.png") %>",
+    starOn: "<%= asset_path("star-on.png")  %>",
+    number: 5,
+    half: false,
+    scoreName: 'review[score]'
+  });
+});
+</script>
+
 <h1>レビューの投稿</h1>
 
 <%= form_with model:@review, url:item_reviews_path, method: :POST, local:true do |f| %>
@@ -32,4 +45,6 @@
   </div>
   </br>
 <% end %>
+
+
 

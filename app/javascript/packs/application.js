@@ -13,9 +13,10 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 
-window.$ = window.jQuery = require('jquery');
-require('packs/jquery.raty')
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
+
+window.$ = window.jQuery = require('jquery');
+require('packs/raty')
