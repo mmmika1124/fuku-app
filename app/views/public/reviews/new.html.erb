@@ -1,2 +1,35 @@
-<h1>Public::Reviews#new</h1>
-<p>Find me in app/views/public/reviews/new.html.erb</p>
+<h1>レビューの投稿</h1>
+
+<%= form_with model:@review, url:item_reviews_path, method: :POST, local:true do |f| %>
+  <div class="field">
+    <%= f.label :"年代" %>
+    <%= f.select :age, Review.ages.keys.map {|k| [I18n.t("enums.review.age.#{k}"), k]} %>
+  </div>
+  </br>
+  <div class="field">
+    <%= f.label :"身長" %>
+    <%= f.text_field :height %>ｃｍ
+  </div>
+  </br>
+  <div class="field">
+    <%= f.label :"体型" %>
+    <%= f.select :figure, Review.figures.keys.map {|k| [t("review.age.#{k}"), k]} %>
+  </div>
+  </br>
+  <div class="field">
+    <%= f.label :"商品満足度" %>
+    <div id='star'></div>
+    <%= f.hidden_field :score, :value => 'score' %>
+  </div>
+  </br>
+  <div class="field">
+    <%= f.label :"レビュー" %>
+    <%= f.text_area :comment %>
+  </div>
+  </br>
+  <div class="field">
+    <%= f.submit "投稿する" %>
+  </div>
+  </br>
+<% end %>
+

@@ -30,7 +30,7 @@
         <%= order_detail.item.name %></br>
         数量：　<%= order_detail.amount %></br>
         ￥<%= order_detail.item.with_tax_price.to_s(:delimited) %></br>
-        レビューを書く
+        <%= link_to "レビューを書く", new_item_review_path(order_detail.item.id) %>
       </div>
       <div class="col-1 mb-3">
       </div>
