@@ -32,12 +32,14 @@ $(document).ready(function(){
   <div class="field">
     <%= f.label :"商品満足度" %>
     <div id='star'></div>
-    <%= f.hidden_field :score, :value => 'score' %>
   </div>
   </br>
   <div class="field">
     <%= f.label :"レビュー" %>
     <%= f.text_area :comment %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :customer_id, :value => current_customer.id  %>
   </div>
   </br>
   <div class="field">
