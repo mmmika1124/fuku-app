@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   validates :genre_id, presence: true
   validates :name, presence: true
@@ -15,6 +16,10 @@ class Item < ApplicationRecord
 
   def with_tax_price
     (price * 1.1).floor
+  end
+
+  def favorited_by?(item)
+    bookmarks.exists?(item_id: item.id)
   end
 
 end

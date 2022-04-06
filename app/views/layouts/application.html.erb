@@ -26,7 +26,7 @@
               <%= link_to "マイページ", customers_mypage_path %>
             </li>
             <li class="nav-item">
-              お気に入り
+              <%= link_to "お気に入り", customer_bookmarks_path(current_customer.id) %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
@@ -53,6 +53,7 @@
       </nav>
     </header>
     <main>
+      </br>
       <%= yield %>
       </br>
       </br>

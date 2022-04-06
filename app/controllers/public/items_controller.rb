@@ -8,5 +8,6 @@ class Public::ItemsController < ApplicationController
     @customer = current_customer
     @reviews = @item.reviews
     @cart_item = CartItem.new
+    @bookmark = Bookmark.new
   end
 end

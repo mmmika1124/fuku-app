@@ -24,17 +24,19 @@
       <div>￥<%= (@item.price * 1.1).floor.to_s(:delimited) %></div>
       </br>
       <div>
-        <%= form_with model:@cart_item, url:cart_items_path, method: :POST, local: true do |f| %>
-          <% if customer_signed_in? %>
+        <% if customer_signed_in? %>
+          <%= form_with model:@cart_item, url:cart_items_path, method: :POST, local: true do |f| %>
             <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.hidden_field :amount, :value => 1 %>
+            <%= f.submit "カートに入れる" %>
           <% end %>
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.hidden_field :amount, :value => 1 %>
-          <%= f.submit "カートに入れる" %>
+        <% else %>
+        <div>※購入にはログインが必要となります。</div>
         <% end %>
       </div>
       </br>
-      お気に入りに追加
+      <%= render'bookmark', item:@item %>
     </div>
   </div>
   </br>

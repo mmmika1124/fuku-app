@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   end
   scope module: 'public' do
     get 'customers/mypage' => 'customers#show'
-    resources :customers, only: [:edit, :update]
+    resources :customers, only: [:edit, :update] do
+      resources :bookmarks, only: [:index, :create, :destroy]
+    end
   end
   scope module: 'public' do
     resources :items, only: [:index, :show] do

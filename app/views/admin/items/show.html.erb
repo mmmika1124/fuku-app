@@ -16,7 +16,7 @@
     <div class="col-5">
       <%= attachment_image_tag @item, :image, format: 'jpg', size: "300x300" %>
     </div>
-    <div class="col-5">
+    <div class="col-6">
       <table>
         <tr>
           <th>商品名</th>
@@ -31,13 +31,18 @@
           <td><%= @item.genre.name %></td>
         </tr>
         <tr>
-          <th>税込価格（税抜価格）</th>
+          <th>税込価格</th>
           <td>
             ￥<%= @item.price.to_s(:delimited) %>
+          </td>
+          <tr>
+          <th>(税抜価格)</th>
+          <td>
             （￥<%= (@item.price * 1.1).floor.to_s(:delimited) %>）
           </td>
         </tr>
       </table>
+      </br>
       <%= link_to "編集する", edit_admin_item_path, class: "btn btn-dark" %>
     </div>
   </div>
@@ -50,8 +55,8 @@
   </br>
   <div class="row">
     <div>平均スコア：　</div>
-    <div id='star' data-score="<%= @average_score %>"></div>
-    <div>（<%= @average_score.round %>）</div>
+    <div id='star' data-score="<%= @average_score.round %>"></div>
+    <div>（<%= @average_score %>）</div>
   </div>
   </br>
   <% @reviews.each do |review| %>
