@@ -1,6 +1,16 @@
+<!--raty.js-->
+<script>
+  $(document).ready(function(){
+    $('#star').raty({
+      starOff: "<%= asset_path("star-off.png") %>",
+      starOn: "<%= asset_path("star-on.png")  %>",
+      number: 5,
+      readOnly: true,
+    });
+  });
+</script>
+
 <h1>商品詳細</h1>
-
-
 <div class="container">
   <div class="row">
     <div class="col-5">
@@ -35,5 +45,25 @@
   </br>
   <div class="row">
     <h3>レビュー一覧</h3>
+    <span>(<%= @reviews.count %>件のレビュー)</span>
   </div>
+  </br>
+  <div class="row">
+    <div>平均スコア：　</div>
+    <div id='star' data-score="<%= @average_score %>"></div>
+    <div>（<%= @average_score.round %>）</div>
+  </div>
+  </br>
+  <% @reviews.each do |review| %>
+    <div class="row">
+      <div>
+        <%= review.age_i18n %>｜
+        身長：<%= review.height %>cm｜
+        体型：<%= review.figure%>
+        </br>
+        <%= review.comment %>
+      </div>
+    </div>
+  <% end %>
+
 </div>

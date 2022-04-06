@@ -20,6 +20,12 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @reviews = @item.reviews
+    if @reviews.present?
+      @average_score = @reviews.average(:score)
+    else
+      @average_score = 0
+    end
   end
 
   def edit
