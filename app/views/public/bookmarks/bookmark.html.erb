@@ -17,8 +17,10 @@
             <%= f.submit "カートに入れる" %>
           <% end %>
         </div>
-        <div class="col-1 mb-3">
-          <%= link_to "削除する", item_bookmarks_path(bookmark.item.id), method: :DELETE %>
+        <div class="col-2 mb-3">
+          <div id="bookmark_<%= bookmark.item.id %>">
+            <%= render'public/bookmarks', item: bookmark.item %>
+          </div>
         </div>
       </div>
     <% end %>
