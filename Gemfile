@@ -64,3 +64,4 @@ gem "refile-mini_magick"
 
 gem "enum_help"
 
+gem 'ransack'
