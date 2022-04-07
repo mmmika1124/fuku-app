@@ -13,6 +13,7 @@ class Public::BookmarksController < ApplicationController
   def destroy
     @bookmark = current_customer.bookmarks.find_by(customer_id: current_customer.id, item_id: params[:item_id])
     @bookmark.destroy
+
   end
 
   private

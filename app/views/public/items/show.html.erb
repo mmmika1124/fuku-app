@@ -36,7 +36,9 @@
         <% end %>
       </div>
       </br>
-      <%= render'bookmark', item:@item %>
+      <div id="bookmark_<%= @bookmark.id %>">
+        <%= render'public/bookmark', item: @item %>
+      </div>
     </div>
   </div>
   </br>
