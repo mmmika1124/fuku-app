@@ -12,13 +12,16 @@ Rails.application.routes.draw do
   scope module: 'public' do
     get 'customers/mypage' => 'customers#show'
     resources :customers, only: [:edit, :update] do
-      resources :bookmarks, only: [:index, :create, :destroy]
+      collection do
+        get 'bookmark' => 'bookmarks#bookmark'
+      end
     end
   end
   scope module: 'public' do
     resources :items, only: [:index, :show] do
       get 'reviews/thanks' => 'reviews#thanks'
       resources :reviews, only: [:new, :create]
+      resource :bookmarks, only: [:create, :destroy]
     end
   end
   scope module: 'public' do

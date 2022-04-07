@@ -1,0 +1,33 @@
+<h1>お気に入り</h1>
+
+<div class="container">
+  <% if @bookmarks.present? %>
+    <% @bookmarks.each do |bookmark| %>
+      <div class="row">
+        <div class="col-3 mb-3">
+          <%= attachment_image_tag bookmark.item, :image, format: 'jpg', size: "200x200" %>
+        </div>
+        <div class="col-3 mb-3">
+          <%= bookmark.item.name %></br>
+          ￥<%= bookmark.item.with_tax_price.to_s(:delimited) %></br>
+          <%= form_with model:@cart_item, url:cart_items_path, method: :POST, local: true do |f| %>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%= f.hidden_field :item_id, :value => bookmark.item.id %>
+            <%= f.hidden_field :amount, :value => 1 %>
+            <%= f.submit "カートに入れる" %>
+          <% end %>
+        </div>
+        <div class="col-1 mb-3">
+          <%= link_to "削除する", item_bookmarks_path(bookmark.item.id), method: :DELETE, remote: true %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="row">
+      <div class= "col">
+        お気に入りに登録されている商品はありません。</br>
+        <%= link_to "ショッピングを続ける", items_path %>
+      </div>
+    </div>
+  <% end %>
+</div>

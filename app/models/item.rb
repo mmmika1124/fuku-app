@@ -18,8 +18,8 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 
-  def favorited_by?(item)
-    bookmarks.exists?(item_id: item.id)
+  def favorited_by?(customer)
+    bookmarks.exists?(customer_id: customer.id)
   end
 
 end
