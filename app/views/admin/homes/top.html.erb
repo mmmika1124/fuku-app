@@ -1,14 +1,61 @@
-<h1>TOPページ</h1>
-
-<div>
-  <%= link_to "ジャンル新規登録/一覧", admin_genres_path %>
-</div>
-<div>
-  <%= link_to "商品新規登録/一覧", admin_items_path %>
-</div>
-<div>
-  <%= link_to "会員一覧", admin_customers_path %>
-</div>
-<div>
-  <%= link_to "注文履歴一覧", admin_orders_path %>
+<div class="container">
+  <div class="row">
+    <h1 class="mx-auto">TOPページ</h1>
+  </div>
+  </br>
+  <div class="row">
+    <div  class="col-1">
+    </div>
+    <div  class="col-4">
+      <%= link_to admin_genres_path do %>
+        <div class="link_btn">
+          <span>
+            ジャンルの新規登録</br>
+            ジャンル一覧の確認はこちら
+          </span>
+        </div>
+      <% end %>
+    </div>
+    <div  class="col-2">
+    </div>
+    <div  class="col-4">
+      <%= link_to admin_items_path do %>
+        <div class="link_btn">
+          <span>
+            商品の新規登録</br>
+            商品一覧の確認はこちら
+          </span>
+        </div>
+      <% end %>
+    </div>
+    <div  class="col-1">
+    </div>
+  </div>
+    </br>
+  <div class="row">
+    <div  class="col-1">
+    </div>
+    <div  class="col-4">
+      <%= link_to admin_customers_path do %>
+        <div class="link_btn">
+          <span>
+            会員一覧のご確認はこちら
+          </span>
+        </div>
+      <% end %>
+    </div>
+    <div  class="col-2">
+    </div>
+    <div  class="col-4">
+      <%= link_to admin_orders_path do %>
+        <div class="link_btn">
+          <span>
+            注文履歴一覧の確認はこちら
+          </span>
+        </div>
+      <% end %>
+    </div>
+    <div  class="col-1">
+    </div>
+  </div>
 </div>
