@@ -1,2 +1,10 @@
 <h1>search</h1>
 
+<div>
+  <%= search_form_for @search do |f| %>
+    <%= f.label :カテゴリー検索 %>
+    <%= f.search_field :name_cont %>
+    </br>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
