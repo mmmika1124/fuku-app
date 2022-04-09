@@ -1,8 +1,8 @@
 class Public::HomesController < ApplicationController
   def top
     @items = Item.all.order(created_at: :desc)
+    @genres = Genre.all
     @search = Item.ransack(params[:q])
-    @results = @search.result
   end
 
   def about

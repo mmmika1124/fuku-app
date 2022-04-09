@@ -1,9 +1,9 @@
 <h1>search</h1>
-
+</br>
 <div>
-  <%= search_form_for @search do |f| %>
-    <%= f.label :カテゴリー検索 %>
-    <%= f.search_field :name_cont %>
+  <%= search_form_for(@search, url:result_items_path, local: true) do |f| %>
+    <%= f.collection_select :genre_id, @genres, :id, :name, prompt: "--Category--" %>
+    </br>
     </br>
     <%= f.submit "検索" %>
   <% end %>

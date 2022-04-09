@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render "public/search" %>
+    </div>
+    <div class="col-9">
+      <h5>search view</h5>
+      </br>
+      <div class="row">
+        <% @results.each do |result| %>
+          <div class="col-sm-3">
+            <%= link_to item_path(result.id) do %>
+              <%= attachment_image_tag result, :image, format: 'jpg', size: "150x150" %><br>
+              <%= result.name %><br>
+              ￥<%= (result.price * 1.1).floor.to_s(:delimited) %><br>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

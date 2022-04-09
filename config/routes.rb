@@ -19,9 +19,13 @@ Rails.application.routes.draw do
   end
   scope module: 'public' do
     resources :items, only: [:index, :show] do
+      collection do
+        get 'result'
+      end
       get 'reviews/thanks' => 'reviews#thanks'
       resources :reviews, only: [:new, :create]
       resource :bookmarks, only: [:create, :destroy]
+
     end
   end
   scope module: 'public' do
