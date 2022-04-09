@@ -1,31 +1,40 @@
-<div class="container">
-  <div class="text-center">
-<h1>商品新規作成</h1>
-<%= link_to "新規作成", new_admin_item_path, class: "btn btn-dark" %>
+<div class="text-center">
+  <h2>商品新規作成</h2>
+  </br>
+  <%= link_to "新規作成", new_admin_item_path, class: "btn btn-dark" %>
 
-<h1>商品一覧</h1>
-<table>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td>
-          <%= link_to item.name, admin_item_path(item.id) %>
-          <%= attachment_image_tag item, :image, format: 'jpg', size: "100x100" %>
-        </td>
-        <td>￥<%= item.price.to_s(:delimited) %></td>
-        <td><%= item.genre.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
+  </br>
+  </br>
+  </br>
+
+  <h2>商品一覧</h2>
+  </br>
+  <div class="row d-flex justify-content-center text-left">
+    <table class="table table-bordered table-sm col-5">
+      <thead class="thead-light">
+        <tr>
+          <th width="15%">商品ID</th>
+          <th width="35%">商品名</th>
+          <th width="10%"></th>
+          <th width="20%">税抜価格</th>
+          <th width="20%">ジャンル</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td>
+              <%= link_to item.name, admin_item_path(item.id) %>
+            </td>
+            <td>
+              <%= attachment_image_tag item, :image, format: 'jpg', size: "50x50" %>
+            </td>
+            <td>￥<%= item.price.to_s(:delimited) %></td>
+            <td><%= item.genre.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

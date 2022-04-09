@@ -10,38 +10,38 @@
   });
 </script>
 
-<h1>商品詳細</h1>
 <div class="container">
+  <h2>商品詳細</h2>
+  </br>
   <div class="row">
-    <div class="col-5">
+    <div class="col-3">
       <%= attachment_image_tag @item, :image, format: 'jpg', size: "300x300" %>
     </div>
+    <div class="col-1"></div>
     <div class="col-6">
       <table>
         <tr>
-          <th>商品名</th>
-          <td><%= @item.name %></td>
+          <th width="35%", valign="top">商品名</th>
+          <td width="65%"><%= @item.name %></td>
         </tr>
         <tr>
-          <th>商品説明</th>
+          <th valign="top">商品説明</th>
           <td><%= @item.introduction %></td>
         </tr>
         <tr>
-          <th>ジャンル</th>
+          <th valign="top">ジャンル</th>
           <td><%= @item.genre.name %></td>
         </tr>
         <tr>
-          <th>税込価格</th>
+          <th valign="top">税込価格（税抜価格）</th>
           <td>
-            ￥<%= @item.price.to_s(:delimited) %>
+            ￥<%= @item.price.to_s(:delimited) %>（￥<%= (@item.price * 1.1).floor.to_s(:delimited) %>）
           </td>
           <tr>
-          <th>(税抜価格)</th>
-          <td>
-            （￥<%= (@item.price * 1.1).floor.to_s(:delimited) %>）
-          </td>
         </tr>
       </table>
+      </br>
+      </br>
       </br>
       <%= link_to "編集する", edit_admin_item_path, class: "btn btn-dark" %>
     </div>
@@ -49,14 +49,14 @@
   </br>
   </br>
   <div class="row">
-    <h3>レビュー一覧</h3>
-    <span>(<%= @reviews.count %>件のレビュー)</span>
+    <h3>レビュー一覧 </h3>
+    <h6 class="d-flex align-items-end">（<%= @reviews.count %>件のレビュー）</h6>
   </div>
   </br>
   <div class="row">
     <div>平均スコア：　</div>
     <div id='star' data-score="<%= @average_score.round %>"></div>
-    <div>（<%= @average_score %>）</div>
+    <div class="d-flex align-items-end">（<%= @average_score %>）</div>
   </div>
   </br>
   <% @reviews.each do |review| %>
@@ -69,6 +69,7 @@
         <%= review.comment %>
       </div>
     </div>
+    </br>
   <% end %>
 
 </div>

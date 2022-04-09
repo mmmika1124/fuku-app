@@ -1,43 +1,49 @@
-<h1>商品編集</h1>
+<div class="container">
+  <div class="text-center">
+    <h2>商品編集</h2>
+    </br>
+    <% if @item.errors.any? %>
+      <%= @item.errors.count %>件のエラーが発生しました
+      <% @item.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
 
-<% if @item.errors.any? %>
-  <%= @item.errors.count %>件のエラーが発生しました
-  <% @item.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
-
-<%= form_with model:@item, url:admin_item_path, method: :PATCH, local: true do |f| %>
-  <div class="field">
-    <%= f.label :"商品名" %>
-    <%= f.text_field :name %>
+    <%= form_with model:@item, url:admin_item_path, method: :PATCH, local: true do |f| %>
+      <div class="field row">
+        <div class="col-3"></div>
+        <%= f.label :"商品名", class:"col-2" %>
+        <%= f.text_field :name, class:"col-4" %>
+      </div>
+      </br>
+      <div class="field row">
+        <div class="col-3"></div>
+        <%= f.label :"商品説明", class:"col-2" %>
+        <%= f.text_area :introduction, class:"col-4" %>
+      </div>
+      </br>
+      <div class="field row">
+        <div class="col-3"></div>
+        <%= f.label :"ジャンル", class:"col-2" %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, class:"col-4" %>
+      </div>
+      </br>
+      <div class="field row">
+        <div class="col-3"></div>
+        <%= f.label :"税抜価格", class:"col-2" %>
+        <%= f.text_field :price, class:"col-2" %> 円
+      </div>
+      </br>
+      <div class="field row">
+        <div class="col-3"></div>
+        <%= f.label :"商品画像", class:"col-2" %>
+        <%= f.attachment_field :image, class:"col-4" %>
+      </div>
+      </br>
+      </br>
+      <div class="actions row d-flex justify-content-center">
+        <%= f.submit "変更を保存", class: "btn btn-dark" %>
+      </div>
+    <% end %>
   </div>
-  </br>
-  <div class="field">
-    <%= f.label :"商品説明" %>
-    <%= f.text_area :introduction %>
-  </div>
-  </br>
-  <div class="field">
-    <%= f.label :"ジャンル" %>
-    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
-  </div>
-  </br>
-  <div class="field">
-    <%= f.label :"税抜価格" %>
-    <%= f.text_field :price %> 円
-  </div>
-  </br>
-  <div class="field">
-    <%= f.label :"商品画像" %>
-    <%= f.attachment_field :image %>
-  </div>
-  </br>
-  <div class="actions">
-    <%= f.submit "変更を保存", class: "btn btn-dark" %>
-  </div>
-<% end %>
-
-</br>
-</br>
-</br>
+</div>
