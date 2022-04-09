@@ -7,13 +7,23 @@
       <h5>search view</h5>
       </br>
       <div class="row">
-        <% if @results.present? %>
+        <% if @search.search? %>
           <% @results.each do |result| %>
             <div class="col-sm-3">
               <%= link_to item_path(result.id) do %>
                 <%= attachment_image_tag result, :image, format: 'jpg', size: "150x150" %><br>
                 <%= result.name %><br>
                 ￥<%= (result.price * 1.1).floor.to_s(:delimited) %><br>
+              <% end %>
+            </div>
+          <% end %>
+        <% elsif @review_search.search? %>
+          <% @review_results.each do |review_result| %>
+            <div class="col-sm-3">
+              <%= link_to item_path(review_result.id) do %>
+                <%= attachment_image_tag review_result, :image, format: 'jpg', size: "150x150" %><br>
+                <%= review_result.name %><br>
+                ￥<%= (review_result.price * 1.1).floor.to_s(:delimited) %><br>
               <% end %>
             </div>
           <% end %>

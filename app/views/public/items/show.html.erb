@@ -43,11 +43,11 @@
   </div>
   </br>
   </br>
-  <div class="row">
+</div>
+
     <h3>レビュー</h3>
     <span>(<%= @reviews.count %>件のレビュー)</span>
-  </div>
-  <div class="row">
+</br>
     <% @reviews.each do |review| %>
       <div>
         <div id='star' data-score="<%= review.score %>"></div>
