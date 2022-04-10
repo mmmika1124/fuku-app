@@ -1,27 +1,28 @@
-<h1>カート</h1>
-<% if @cart_items.present? %>
-  <div>
-    <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :DELETE, data: {confirm: "本当にカートを空にしてもよろしいですか？"} %>
-  </div>
-  <div class="container">
+<div class="container">
+  <h2>カート</h2>
+  </br>
+  <% if @cart_items.present? %>
+    <div class="text-right">
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :DELETE, data: {confirm: "本当にカートを空にしてもよろしいですか？"} %>
+    </div>
     <% @cart_items.each do |cart_item| %>
       <div class="row">
         <div class="col-4">
           <%= attachment_image_tag cart_item.item, :image, format: 'jpg', size: "200x200" %>
         </div>
-        <div class="col-6">
-          <%= cart_item.item.name %>
-          <table>
+        <div class="col-5">
+          <h5 class="font-weight-bold"><%= cart_item.item.name %></h5>
+          <table class="table table-borderless table-sm" >
             <tr>
-              <th>単価（税込）：</th>
-              <td>￥<%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+              <th width="35%">単価（税込）：</th>
+              <td width="65%">￥<%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
             </tr>
             <tr>
               <th>数量　　　　：</th>
               <td>
                 <%= form_with model:cart_item, url:cart_item_path(cart_item.id), method: :PATCH, local: true do |f| %>
                   <%= f.select :amount, *[1..5] %>
-                  <%= f.submit "変更" %>
+                  <%= f.submit "変更", class:"ml-2" %>
                 <% end %>
               </td>
             </tr>
@@ -30,23 +31,33 @@
               <td>￥<%= cart_item.subtotal.to_s(:delimited) %></td>
             </tr>
           </table>
-          <div>
+          <div class="text-right">
             <%= link_to "削除する", cart_item_path(cart_item.id), method: :DELETE, data: {confirm: "本当に削除してもよろしいですか？"} %>
           </div>
         </div>
       </div>
       </br>
     <% end %>
-    <div class="row">
-     注文合計　￥<%= @total.to_s(:delimited) %>
+    <h5 class="text-right font-weight-bold">
+      注文合計　￥<%= @total.to_s(:delimited) %>
+    </h5>
+    </br>
+    <div class="text-center">
+      <div>
+        <%= link_to "ご購入手続きへ", new_order_path, class:"btn btn-dark col-3" %>
+      </div>
+      </br>
     </div>
-  </div>
-  <div>
-    <%= link_to "ご購入手続きへ", new_order_path %>
-  </div>
-<% else %>
-  <p>カートに商品が入っていません。</p>
-<% end %>
-<div>
-  <%= link_to "ショッピングを続ける", items_path %>
+  <% else %>
+    <div class="text-center">
+      <p>カートに商品が入っていません。</p>
+    </div>
+  <% end %>
+    <div class="text-center">
+      <div>
+        <%= link_to "ショッピングを続ける", items_path, class:"btn btn-outline-dark col-3" %>
+      </div>
+    </div>
+    </br>
+    </br>
 </div>

@@ -27,12 +27,11 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
-      <%= render "public/search", q: @search, r: @review_search %>
+      <%= render "public/search", q: @search %>
     </div>
     <div class="col-9">
       </br>
       <h5>new arrivals</h5>
-
       <ul class="bxslider">
         <% @items.first(5).each do |item| %>
           <%= link_to item_path(item.id) do %>

@@ -4,12 +4,12 @@
       <%= render "public/search", q: @search, r: @review_search %>
     </div>
     <div class="col-9">
-      <h5>search view</h5>
+      <h5 class="text-center">search view</h5>
       </br>
       <div class="row">
         <% if @results.present? %>
           <% @results.each do |result| %>
-            <div class="col-sm-3">
+            <div class="col-sm-3 mb-3">
               <%= link_to item_path(result.id) do %>
                 <%= attachment_image_tag result, :image, format: 'jpg', size: "150x150" %><br>
                 <%= result.name %><br>
