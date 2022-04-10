@@ -1,9 +1,12 @@
-<h1>注文情報入力</h1>
-
-
-    <div>支払方法　：</div>
-    <div>
-      <%= form_with model:@order, url:orders_confirm_path, method: :POST, local: true do |f| %>
+<div class="container">
+  <h2>注文情報入力</h2>
+  </br>
+  <%= form_with model:@order, url:orders_confirm_path, method: :POST, local: true do |f| %>
+    <div class="row">
+      <div class="col-2">
+        <legend class="col-form-label pt-0 font-weight-bold">支払方法　：</legend>
+      </div>
+      <div class="col-3">
         <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
         <%= f.label :payment_method, "クレジットカード" %>
         </br>
@@ -11,13 +14,17 @@
         <%= f.label :payment_method, "銀行振込" %>
         </br>
         </br>
-        <div>
-          お届け先は現在マイページで確認できる登録先のご住所、ご氏名宛となります。</br>
-          次のページにて記載がありますのでお間違いがないかご確認ください。
-        </div>
-        </br>
-        </br>
-        <%= f.submit "確認画面へ進む" %>
-      <% end %>
+      </div>
     </div>
+    <div class="row font-weight-bold">
+      お届け先は現在マイページで確認できる登録先のご住所、ご氏名宛となります。</br>
+      次のページにて記載がありますのでお間違いがないかご確認ください。
+    </div>
+    </br>
+    </br>
+    <div class="text-center">
+      <%= f.submit "確認画面へ進む", class:"btn btn-dark col-2" %>
+    </div>
+  <% end %>
+</div>
 
