@@ -1,7 +1,7 @@
 <% if customer_signed_in? %>
   <% if item.bookmarked_by?(current_customer) %>
-    <%= link_to "お気に入りをはずす", item_bookmarks_path(item.id), method: :DELETE, remote: true %>
+    <%= link_to "お気に入りをはずす", item_bookmarks_path(item.id), method: :DELETE, remote: true, class:"btn btn-outline-dark col-5" %>
   <% else %>
-    <%= link_to "お気に入りに追加", item_bookmarks_path(item.id), method: :POST, remote: true %>
+    <%= link_to "お気に入りに追加", item_bookmarks_path(item.id), method: :POST, remote: true, class:"btn btn-outline-dark col-5" %>
   <% end %>
 <% end %>

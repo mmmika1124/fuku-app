@@ -1,7 +1,7 @@
 <!--raty.js-->
 <script>
   $(document).ready(function(){
-    $('#star').raty({
+    $('.star').raty({
       starOff: "<%= asset_path("star-off.png") %>",
       starOn: "<%= asset_path("star-on.png")  %>",
       number: 5,
@@ -10,53 +10,52 @@
   });
 </script>
 
-<h1>商品詳細</h1>
 <div class="container">
+  <h2>商品詳細</h2>
+  </br>
   <div class="row">
     <div class="col-5">
       <%= attachment_image_tag @item, :image, format: 'jpg', size: "300x300" %>
     </div>
     <div class="col-5">
-      <div><%= @item.name %></div>
+      <h5 class="font-weight-bold"><%= @item.name %></h5>
       </br>
       <div><%= @item.introduction %></div>
       </br>
-      <div>￥<%= (@item.price * 1.1).floor.to_s(:delimited) %></div>
+      <div>￥<%= (@item.price * 1.1).floor.to_s(:delimited) %>（税込）</div>
       </br>
-      <div>
-        <% if customer_signed_in? %>
-          <%= form_with model:@cart_item, url:cart_items_path, method: :POST, local: true do |f| %>
-            <%= f.hidden_field :customer_id, :value => current_customer.id %>
-            <%= f.hidden_field :item_id, :value => @item.id %>
-            <%= f.hidden_field :amount, :value => 1 %>
-            <%= f.submit "カートに入れる" %>
-          <% end %>
-        <% else %>
-        <div>※購入にはログインが必要となります。</div>
+      </br>
+      <% if customer_signed_in? %>
+        <%= form_with model:@cart_item, url:cart_items_path, method: :POST, local: true do |f| %>
+          <%= f.hidden_field :customer_id, :value => current_customer.id %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.hidden_field :amount, :value => 1 %>
+          <%= f.submit "カートに入れる", class:"btn btn-dark col-5" %>
         <% end %>
-      </div>
-      </br>
-      <div id="bookmark_<%= @item.id %>">
-        <%= render'public/bookmarks', item: @item %>
-      </div>
+        </br>
+        <div id="bookmark_<%= @item.id %>">
+          <%= render'public/bookmarks', item: @item %>
+        </div>
+      <% else %>
+        <div>※購入にはログインが必要となります。</div>
+      <% end %>
     </div>
   </div>
   </br>
   </br>
-</div>
-
+  <div class="row">
     <h3>レビュー</h3>
-    <span>(<%= @reviews.count %>件のレビュー)</span>
-</br>
-    <% @reviews.each do |review| %>
-      <div>
-        <div id='star' data-score="<%= review.score %>"></div>
-        <%= review.age_i18n %>｜
-        身長：<%= review.height %>cm｜
-        体型：<%= review.figure%>
-        </br>
-        <%= review.comment %>
-      </div>
-    <% end %>
+    <h6 class="d-flex align-items-end">（<%= @reviews.count %>件のレビュー）</h6>
   </div>
+  <% @reviews.each do |review| %>
+    <div class='star' data-score="<%= review.score %>"></div>
+    <div>
+      <%= review.age_i18n %> ｜
+      身長：<%= review.height %>cm｜
+      体型：<%= review.figure%>
+      </br>
+      <%= review.comment %>
+    </div>
+    </br>
+  <% end %>
 </div>

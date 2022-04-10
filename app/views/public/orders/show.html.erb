@@ -1,56 +1,64 @@
-<h1>注文履歴詳細</h1>
 <div class="container">
+  <h2>注文履歴詳細</h2>
+  </br>
   <div class="row">
-    <table>
-      <tr>
-        <th>注文日</th>
-        <td><%= @order.updated_at.strftime("%Y/%m/%d") %></td>
-      </tr>
-      <tr>
-        <th>注文番号</th>
-        <td><%= @order.id %></td>
-      </tr>
-      <tr>
-        <th>支払金額</th>
-        <td>￥<%= (@order.total_payment).to_s(:delimited) %></td>
-      </tr>
-      <tr>
-        <th>支払方法</th>
-        <td><%= @order.payment_method_i18n %></td>
-      </tr>
+    <table class="table table-borderless table-sm col-5">
+      <tbody>
+        <tr>
+          <th width="35%">注文日</th>
+          <td width="65%"><%= @order.updated_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <tr>
+          <th>注文番号</th>
+          <td><%= @order.id %></td>
+        </tr>
+        <tr>
+          <th>支払金額</th>
+          <td>￥<%= (@order.total_payment).to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+      </tbody>
     </table>
   </div>
   </br>
   <div class="row">
     <% @order_details.each do |order_detail| %>
-      <div class="col-2 mb-3">
+      <div class="col-2 mb-4">
         <%= attachment_image_tag order_detail.item, :image, format: 'jpg', size: "150x150" %>
       </div>
-      <div class="col-3 mb-3">
-        <%= order_detail.item.name %></br>
+      <div class="col-3 mb-4">
+        <div class="font-weight-bold">
+          <%= order_detail.item.name %>
+        </div>
         数量：　<%= order_detail.amount %></br>
         ￥<%= order_detail.item.with_tax_price.to_s(:delimited) %></br>
-        <%= link_to "レビューを書く", new_item_review_path(order_detail.item.id) %>
+        </br>
+        <%= link_to "レビューを書く", new_item_review_path(order_detail.item.id), class:"btn btn-outline-dark btn-sm" %>
       </div>
-      <div class="col-1 mb-3">
+      <div class="col-1 mb-4">
       </div>
     <% end %>
   </div>
   </br>
   <div class="row">
-    <table>
-      <tr>
-        <th>配送先</th>
-        <td>〒<%= @order.postal_code %><td>
-      </tr>
-      <tr>
-        <th></th>
-        <td><%= @order.address %><td>
-      </tr>
-      <tr>
-        <th></th>
-        <td><%= @order.name %><td>
-      </tr>
+    <table class="table table-borderless table-sm col-5">
+      <tbody>
+        <tr>
+          <th width="35%">配送先</th>
+          <td width="65%">〒<%= @order.postal_code %><td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= @order.address %><td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= @order.name %><td>
+        </tr>
+      </tbody>
     </table>
   </div>
   </br>

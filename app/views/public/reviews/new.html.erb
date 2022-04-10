@@ -10,40 +10,42 @@ $(document).ready(function(){
   });
 });
 </script>
-
-<h1>レビューの投稿</h1>
-
-<%= form_with model:@review, url:item_reviews_path, method: :POST, local:true do |f| %>
-  <div class="field">
-    <%= f.label :"年代" %>
-    <%= f.select :age, Review.ages.keys.map {|k| [I18n.t("enums.review.age.#{k}"), k]} %>
-  </div>
+<div class="container">
+  <h2>レビューの投稿</h2>
   </br>
-  <div class="field">
-    <%= f.label :"身長" %>
-    <%= f.text_field :height %>ｃｍ
-  </div>
-  </br>
-  <div class="field">
-    <%= f.label :"体型" %>
-    <%= f.select :figure, Review.figures.keys.map {|k| [t("review.age.#{k}"), k]} %>
-  </div>
-  </br>
-  <div class="field">
-    <%= f.label :"商品満足度" %>
-    <div id='star'></div>
-  </div>
-  </br>
-  <div class="field">
-    <%= f.label :"レビュー" %>
-    <%= f.text_area :comment %>
-  </div>
-  </br>
-  <div class="field">
-    <%= f.submit "投稿する" %>
-  </div>
-  </br>
-<% end %>
+  <%= form_with model:@review, url:item_reviews_path, method: :POST, local:true do |f| %>
+    <div class="field row">
+      <%= f.label "年代", class:"col-2 font-weight-bold" %>
+      <%= f.select :age, Review.ages.keys.map {|k| [I18n.t("enums.review.age.#{k}"), k]} %>
+    </div>
+    </br>
+    <div class="field row">
+      <%= f.label "身長", class:"col-2 font-weight-bold" %>
+      <%= f.text_field :height %> ｃｍ
+    </div>
+    </br>
+    <div class="field row">
+      <%= f.label "体型", class:"col-2 font-weight-bold" %>
+      <%= f.select :figure, Review.figures.keys.map {|k| [t("review.age.#{k}"), k]} %>
+    </div>
+    </br>
+    <div class="field row">
+      <%= f.label "商品満足度", class:"col-2 font-weight-bold" %>
+      <span id='star'></span>
+    </div>
+    </br>
+    <div class="field row">
+      <%= f.label "レビュー", class:"col-2 font-weight-bold" %>
+      <%= f.text_area :comment, class:"col-4" %>
+    </div>
+    </br>
+    </br>
+    <div class="actions row">
+      <%= f.submit "投稿する", class: "btn btn-dark col-2 ml-3" %>
+    </div>
+    </br>
+  <% end %>
+</div>
 
 
 

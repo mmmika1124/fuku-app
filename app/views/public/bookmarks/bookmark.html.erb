@@ -1,23 +1,23 @@
-<h1>お気に入り</h1>
-
 <div class="container">
+  <h2>お気に入り</h2>
+  </br>
   <% if @bookmarks.present? %>
     <% @bookmarks.each do |bookmark| %>
-      <div class="row">
-        <div class="col-3 mb-3">
+      <div class="row mb-4">
+        <div class="col-4 text-center">
           <%= attachment_image_tag bookmark.item, :image, format: 'jpg', size: "200x200" %>
         </div>
-        <div class="col-3 mb-3">
-          <%= bookmark.item.name %></br>
-          ￥<%= bookmark.item.with_tax_price.to_s(:delimited) %></br>
+        <div class="col-5">
+          <h5 class="font-weight-bold"><%= bookmark.item.name %></h5>
+          <div>￥<%= bookmark.item.with_tax_price.to_s(:delimited) %>（税込）</div>
+          </br>
           <%= form_with model:@cart_item, url:cart_items_path, method: :POST, local: true do |f| %>
             <%= f.hidden_field :customer_id, :value => current_customer.id %>
             <%= f.hidden_field :item_id, :value => bookmark.item.id %>
             <%= f.hidden_field :amount, :value => 1 %>
-            <%= f.submit "カートに入れる" %>
+            <%= f.submit "カートに入れる", class:"btn btn-dark col-5" %>
           <% end %>
-        </div>
-        <div class="col-2 mb-3">
+          </br>
           <div id="bookmark_<%= bookmark.item.id %>">
             <%= render'public/bookmarks', item: bookmark.item %>
           </div>
@@ -25,11 +25,9 @@
       </div>
     <% end %>
   <% else %>
-    <div class="row">
-      <div class= "col">
-        お気に入りに登録されている商品はありません。</br>
-        <%= link_to "ショッピングを続ける", items_path %>
-      </div>
+    <div class="text-center">
+      <p>お気に入りに登録されている商品はありません。</p>
+      <%= link_to "ショッピングを続ける", items_path, class:"btn btn-outline-dark col-3" %>
     </div>
   <% end %>
 </div>
