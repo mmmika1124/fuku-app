@@ -1,10 +1,11 @@
-<h1>注文履歴詳細</h1>
 <div class="container">
+  <h2>注文履歴詳細</h2>
+  </br>
   <div class="row">
-    <table>
+    <table class="table table-borderless table-sm col-5">
       <tr>
-        <th>購入者</th>
-        <td><%= @order.name %></td>
+        <th width="40%">購入者</th>
+        <td width="60%"><%= @order.name %></td>
       </tr>
       <tr>
         <th>注文日</th>
@@ -30,41 +31,43 @@
   </div>
   </br>
   <div class="row">
-    <table class= "col-6">
-      <tr>
-        <th>商品名</th>
-        <th>単価（税込）</th>
-        <th>数量</th>
-        <th>小計</th>
-      </tr>
-      <% @order_details.each do |order_detail| %>
+    <table class="table table-bordered table-sm col-7">
+      <thead class="thead-light">
         <tr>
-          <td>
-            <%= attachment_image_tag order_detail.item, :image, format: 'jpg', size: "50x50" %>
-            <%= order_detail.item.name %>
-          </td>
-          <td>
-            ￥<%= order_detail.item.with_tax_price.to_s(:delimited) %>
-          </td>
-          <td>
-            <%= order_detail.amount %>
-          </td>
-          <td>
-            ￥<%= (order_detail.item.with_tax_price * order_detail.amount).to_s(:delimited) %>
-          </td>
+          <th width="50%">商品名</th>
+          <th width="20%">単価（税込）</th>
+          <th width="10%">数量</th>
+          <th width="20%">小計</th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <td>
+              <%= attachment_image_tag order_detail.item, :image, format: 'jpg', size: "50x50" %>
+              <%= order_detail.item.name %>
+            </td>
+            <td>
+              ￥<%= order_detail.item.with_tax_price.to_s(:delimited) %>
+            </td>
+            <td>
+              <%= order_detail.amount %>
+            </td>
+            <td>
+              ￥<%= (order_detail.item.with_tax_price * order_detail.amount).to_s(:delimited) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
     <div class= "col-2">
     </div>
-    <div class= "col-3">
-      <table>
-        <tr>
-          <th>支払金額</th>
-          <td>￥<%= (@order.total_payment).to_s(:delimited) %></td>
-        </tr>
-      </table>
-    </div>
+    <table class= "table table-borderless col-3 d-flex align-items-end">
+      <tr>
+        <th>請求金額合計</th>
+        <td class="font-weight-bold">￥<%= (@order.total_payment).to_s(:delimited) %></td>
+      </tr>
+    </table>
   </div>
   </br>
 </div>

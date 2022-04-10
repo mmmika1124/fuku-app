@@ -1,10 +1,12 @@
-<h1>
-  <%= @customer.last_name  + "　" + @customer.first_name %> さんの会員詳細
-</h1>
-  <table>
+<div class="container">
+  <h2>
+    <%= @customer.last_name  + "　" + @customer.first_name %> さんの会員詳細
+  </h2>
+  </br>
+  <table class="table table-borderless col-6">
     <tr>
-      <th>会員ID</th>
-      <td><%= @customer.id %></td>
+      <th width="35%">会員ID</th>
+      <td width="65%"><%= @customer.id %></td>
     </tr>
     <tr>
       <th>氏名</th>
@@ -23,3 +25,4 @@
       <td><%= @customer.email %></td>
     </tr>
   </table>
+</div>

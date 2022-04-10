@@ -19,7 +19,7 @@
     </div>
     <div class="col-1"></div>
     <div class="col-6">
-      <table>
+      <table class="table table-borderless">
         <tr>
           <th width="35%", valign="top">商品名</th>
           <td width="65%"><%= @item.name %></td>
@@ -37,11 +37,8 @@
           <td>
             ￥<%= @item.price.to_s(:delimited) %>（￥<%= (@item.price * 1.1).floor.to_s(:delimited) %>）
           </td>
-          <tr>
         </tr>
       </table>
-      </br>
-      </br>
       </br>
       <%= link_to "編集する", edit_admin_item_path, class: "btn btn-dark" %>
     </div>
@@ -71,5 +68,4 @@
     </div>
     </br>
   <% end %>
-
 </div>

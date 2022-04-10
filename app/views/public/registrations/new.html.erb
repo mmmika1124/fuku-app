@@ -1,46 +1,37 @@
 <div class="container">
-  </br>
-  </br>
-  </br>
-  </br>
-  </br>
   <div class="text-center">
     <h2>会員登録</h2>
-
+    </br>
     <%= form_with model: @customer, url: customer_registration_path do |f| %>
-
       <div class="field">
-        <%= f.label :お名前 %><br />
-        <%= f.text_field :last_name, placeholder: "姓" %>
-        <%= f.text_field :first_name, placeholder: "名" %>
+        <%= f.label "お名前", class:"col-sm-3" %>
+        <%= f.text_field :last_name, placeholder: "姓", class:"col-sm-2" %>
+        <%= f.text_field :first_name, placeholder: "名", class:"col-sm-2" %>
       </div>
-
+      </br>
       <div class="field">
-        <%= f.label :メールアドレス %><br />
-        <%= f.email_field :email %>
+        <%= f.label "メールアドレス", class:"col-sm-3" %>
+        <%= f.email_field :email, class:"col-sm-4" %>
       </div>
-
+      </br>
       <div class="field">
-        <%= f.label :郵便番号（ハイフンなし） %><br />
-        <%= f.text_field :postal_code %>
+        <%= f.label "郵便番号（ハイフンなし）", class:"col-sm-3"%>
+        <%= f.text_field :postal_code, class:"col-sm-4" %>
       </div>
-
+      </br>
       <div class="field">
-        <%= f.label :住所 %><br />
-        <%= f.text_field :address %>
+        <%= f.label "住所", class:"col-sm-3" %>
+        <%= f.text_field :address, class:"col-sm-4" %>
       </div>
-
+      </br>
       <div class="field">
-        <%= f.label :パスワード %>
-        <% if @minimum_password_length %>
-        (<%= @minimum_password_length %> 文字以上)
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.label "パスワード（６文字以上）", class:"col-sm-3" %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"col-sm-4" %>
       </div>
-
+      </br>
       <div class="field">
-        <%= f.label :パスワード（確認用） %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.label "パスワード（確認用）", class:"col-sm-3" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col-sm-4" %>
       </div>
       </br>
       <div class="actions">
@@ -48,10 +39,13 @@
       </div>
     <% end %>
     </br>
+    </br>
     <div>
       新規登録済の方は
       <%= render "public/shared/links" %>
       からログインをお願いします。
     </div>
+    </br>
+    </br>
   </div>
 </div>

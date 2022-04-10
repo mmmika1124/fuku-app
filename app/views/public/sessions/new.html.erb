@@ -1,31 +1,33 @@
 <div class="container">
-  </br>
-  </br>
-  </br>
-  </br>
-  </br>
   <div class="text-center">
     <h2>ログイン</h2>
-
+    </br>
     <%= form_with model: @customer, url: customer_session_path do |f| %>
       <div class="field">
-        <%= f.label :メールアドレス %><br />
-        <%= f.email_field :email %>
+        <%= f.label "メールアドレス", class:"col-sm-2" %>
+        <%= f.email_field :email, class:"col-sm-3" %>
       </div>
-
+      </br>
       <div class="field">
-        <%= f.label :パスワード %><br />
-        <%= f.password_field :password %>
+        <%= f.label "パスワード", class:"col-sm-2" %>
+        <%= f.password_field :password, class:"col-sm-3" %>
       </div>
-
+      </br>
 　　  <div class="actions">
         <%= f.submit "ログイン", class:"btn btn-dark" %>
       </div>
     <% end %>
+    </br>
     </br>
     <div>
       会員登録がお済でない方は
       <%= render "public/shared/links" %>
       から会員登録をお願いします。
     </div>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
   </div>
+</div>
