@@ -13,6 +13,10 @@ $(document).ready(function(){
 <div class="container">
   <h2>レビューの投稿</h2>
   </br>
+  <% if @review.errors.any? %>
+    <%= @review.errors.count %>件のエラーが発生しました。
+    記載されていない箇所がないかご確認ください。
+  <% end %>
   <%= form_with model:@review, url:item_reviews_path, method: :POST, local:true do |f| %>
     <div class="field row">
       <%= f.label "年代", class:"col-2 font-weight-bold" %>

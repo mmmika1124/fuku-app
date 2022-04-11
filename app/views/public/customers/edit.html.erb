@@ -2,10 +2,8 @@
   <h2>会員情報変更</h2>
   </br>
   <% if @customer.errors.any? %>
-    <%= @customer.errors.count %>件のエラーが発生しました
-    <% @customer.errors.full_messages.each do |message| %>
-      <%= message %>
-    <% end %>
+    <%= @customer.errors.count %>件のエラーが発生しました。
+    記載されていない箇所がないかご確認ください。
   <% end %>
   <%= form_with model:@customer, url:customer_path, method: :PATCH, local: true do |f| %>
     <div class="field">

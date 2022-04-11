@@ -1,4 +1,5 @@
 class Public::BookmarksController < ApplicationController
+  before_action :authenticate_customer!
   def bookmark
     @bookmarks = current_customer.bookmarks
     @cart_item = CartItem.new

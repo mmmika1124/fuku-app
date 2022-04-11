@@ -9,8 +9,11 @@ class Public::ReviewsController < ApplicationController
     @item = Item.find(params[:item_id])
     @review = current_customer.reviews.new(review_params)
     @review.item_id = @item.id
-    @review.save
-    redirect_to item_reviews_thanks_path
+    if @review.save
+      redirect_to item_reviews_thanks_path
+    else
+      render :new
+    end
   end
 
   private
