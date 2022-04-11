@@ -67,4 +67,4 @@ gem "enum_help"
 gem 'ransack'
 
 gem 'rubocop', require: false
-gem 'rubocop-rails'
+gem 'rubocop-rails', require:false
