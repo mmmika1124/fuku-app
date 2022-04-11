@@ -16,7 +16,7 @@
   </br>
   <div>
     <%= form_tag(result_items_path, method: :get, local: true) do %>
-      <%= hidden_field_tag "q[type]", "review" %>
+      <%= hidden_field_tag "q[type]", "age" %>
       <%= label_tag "レビュー検索" %>
       </br>
       <% options = {} %>
@@ -24,6 +24,20 @@
       <% options[I18n.t("enums.review.age.#{k}")] = k %>
       <% end %>
       <%= select_tag :age, options_for_select(options, 1), prompt: "-----Age-----" %>
+      </br>
+      </br>
+      <%= submit_tag "検索", class:"btn btn-outline-dark btn-sm" %>
+    <% end %>
+  </div>
+  <div>
+    <%= form_tag(result_items_path, method: :get, local: true) do %>
+      <%= hidden_field_tag "q[type]", "style" %>
+      </br>
+      <% options = {} %>
+      <% Review.figures.keys.each do |k| %>
+      <% options[t("review.figure.#{k}")] = k %>
+      <% end %>
+      <%= select_tag :figure, options_for_select(options, 1), prompt: "-----Style----" %>
       </br>
       </br>
       <%= submit_tag "検索", class:"btn btn-outline-dark btn-sm" %>
