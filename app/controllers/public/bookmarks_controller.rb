@@ -6,15 +6,15 @@ class Public::BookmarksController < ApplicationController
   end
 
   def create
-    item = Item.find(params[:item_id])
-    bookmark = current_customer.bookmarks.new(item_id: item.id)
-    bookmark.save
+    @item = Item.find(params[:item_id])
+    @bookmark = current_customer.bookmarks.new(item_id: @item.id)
+    @bookmark.save
   end
 
   def destroy
     @item = Item.find(params[:item_id])
-    bookmark = current_customer.bookmarks.find_by(customer_id: current_customer.id, item_id: params[:item_id])
-    bookmark.destroy
+    @bookmark = current_customer.bookmarks.find_by(customer_id: current_customer.id, item_id: params[:item_id])
+    @bookmark.destroy
   end
 
   private
