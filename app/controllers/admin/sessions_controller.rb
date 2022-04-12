@@ -14,7 +14,7 @@ class Admin::SessionsController < Devise::SessionsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password])
   end
 
   # before_action :configure_sign_in_params, only: [:create]

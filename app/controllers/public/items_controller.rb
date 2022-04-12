@@ -16,14 +16,15 @@ class Public::ItemsController < ApplicationController
   def result
     @genres = Genre.all
     @search = Item.ransack(genre_id_eq: params[:q][:genre_id])
-    if params[:q][:type] == 'category'
-      @results = @search.result
-    elsif params[:q][:type] == 'age'
-      @results = Item.where(id: Review.where(age: params[:age]).pluck('item_id').uniq)
-    elsif params[:q][:type] == 'style'
-      @results = Item.where(id: Review.where(figure: params[:figure]).pluck('item_id').uniq)
-    else
-      @results = Item.all
-    end
+    @results = case params[:q][:type]
+               when 'category'
+                 @search.result
+               when 'age'
+                 Item.where(id: Review.where(age: params[:age]).pluck('item_id').uniq)
+               when 'style'
+                 Item.where(id: Review.where(figure: params[:figure]).pluck('item_id').uniq)
+               else
+                 Item.all
+               end
   end
 end
