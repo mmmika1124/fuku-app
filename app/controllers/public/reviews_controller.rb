@@ -21,5 +21,4 @@ class Public::ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:customer_id, :item_id, :age, :height, :figure, :score, :comment)
   end
-
 end

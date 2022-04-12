@@ -22,5 +22,4 @@ class Public::BookmarksController < ApplicationController
   def bookmark_params
     params.require(:bookmark).permit(:customer_id, :item_id)
   end
-
 end

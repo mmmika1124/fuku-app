@@ -5,6 +5,5 @@ class Public::HomesController < ApplicationController
     @search = Item.ransack(params[:q])
   end
 
-  def about
-  end
+  def about; end
 end

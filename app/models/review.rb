@@ -1,5 +1,4 @@
 class Review < ApplicationRecord
-
   belongs_to :customer
   belongs_to :item
 
@@ -10,5 +9,4 @@ class Review < ApplicationRecord
   validates :height, presence: true
   validates :figure, presence: true
   validates :comment, presence: true
-
 end

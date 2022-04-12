@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-
   attachment :image
 
   belongs_to :genre
@@ -21,5 +20,4 @@ class Item < ApplicationRecord
   def bookmarked_by?(customer)
     bookmarks.exists?(customer_id: customer.id)
   end
-
 end
