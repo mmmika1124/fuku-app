@@ -32,11 +32,12 @@
 
 ## 設計書
 
-<...>
+- https://docs.google.com/spreadsheets/d/1BPcWdIMS72qqKZYik0mTS4vWxv08WaxJ/edit?usp=sharing&ouid=108540540007114114335&rtpof=true&sd=true
+- https://docs.google.com/spreadsheets/d/1OLsDsQEYuGn9Ao7X1oue4nE8-zVf9H005Lss7csEG4w/edit?usp=sharing
 
 ## チャレンジ要素一覧
 
-<https://docs.google.com/spreadsheets/d/1F71dVIngy8MOQYmOOZZ7ywgGCPDEHb5Gycs4Zdl74Fc/edit?usp=sharing>
+https://docs.google.com/spreadsheets/d/1F71dVIngy8MOQYmOOZZ7ywgGCPDEHb5Gycs4Zdl74Fc/edit?usp=sharing
 
 ## 開発環境
 
@@ -48,7 +49,7 @@
 
 ## 使用素材
 
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
-- 使用しない場合は、使用素材の項目を README から削除してください。
+- DesignEvo https://www.designevo.com/
+- Shutterstock https://www.shutterstock.com/ja/
+- いらすとや https://www.irasutoya.com/
 
-※作成後、使用したものがあったら追記します※
